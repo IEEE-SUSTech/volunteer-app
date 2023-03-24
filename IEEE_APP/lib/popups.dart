@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:ieee_app/confetti.dart';
+
+import 'package:ieee_app/ratingCardDetails.dart';
 
 class CustomDialogWidget extends StatelessWidget {
-  ConfettiAction confettiAction = ConfettiAction();
   List item = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   List flags = [
     'yellow',
@@ -13,7 +13,6 @@ class CustomDialogWidget extends StatelessWidget {
     'yellow',
   ];
 
-  int rating = 85;
   // remove this  u dont need it after tesing _ ab
   @override
   Widget build(BuildContext context) => TextButton(
@@ -176,83 +175,10 @@ class CustomDialogWidget extends StatelessWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 15),
-                    CircularPercentIndicator(
-                      radius: 130.0,
-                      animation: true,
-                      animationDuration: 1200,
-                      lineWidth: 15.0,
-                      percent: rating <= 100 ? rating / 100 : 1,
-                      center: Text(
-                        "$rating",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                          color: Color.fromRGBO(0, 98, 155, 1),
-                        ),
-                      ),
-                      circularStrokeCap: CircularStrokeCap.butt,
-                      backgroundColor: Colors.black26,
-                      progressColor: Color.fromRGBO(0, 98, 155, 1),
-                    ),
-                    SizedBox(height: 15),
-                    Container(
-                      height: 180,
-                      width: double.infinity,
-                      child: ListView.builder(
-                          itemCount: item.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ListTile(
-                                leading: Icon(
-                                  Icons.circle,
-                                  color: Colors.black,
-                                ),
-                                title: Text(
-                                    " Task  ${item[index]} - ${index} /10"));
-                          }),
-                    ),
-                    ratingfeedback(),
-                    SizedBox(
-                      height: 5,
-                    ),
-                  ],
-                ),
+                child: RatingCardDetails(),
               ),
             ),
           );
         },
       );
-
-  Widget ratingfeedback() {
-    if (rating < 80) {
-      return Padding(
-        padding: EdgeInsets.all(10),
-        child: Text(
-          'You can do better!',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      );
-    } else {
-      //confettiAction.play();
-      return Padding(
-        padding: EdgeInsets.all(10),
-        child: Text(
-          "Well Done !! ",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      );
-    }
-  }
 }
