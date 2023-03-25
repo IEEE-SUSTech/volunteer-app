@@ -37,10 +37,13 @@ class _HomePageState extends State<HomePage> {
         actions: [
           GestureDetector(
             onTap: () {},
-            child: const Image(
-              height: 50.0,
-              width: 50.0,
-              image: AssetImage('image/ieee.png'),
+            child: Padding(
+              padding: EdgeInsets.all(3),
+              child: Image(
+                height: 50.0,
+                width: 50.0,
+                image: AssetImage('image/ieee.png'),
+              ),
             ),
           )
         ],
